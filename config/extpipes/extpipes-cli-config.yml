@@ -13,52 +13,45 @@ cognite: # kwargs to pass to the CogniteClient, Environment variable format: ${E
         scopes:
             - ${EXTPIPES_IDP_SCOPES}
         token_url: ${EXTPIPES_IDP_TOKEN_URL}
-
 logger:
     file:
         path: ./logs/extpipes-deploy.log
         level: INFO
     console:
         level: INFO
-
 # extpipe-pattern only documentation atm
 extpipe-pattern: '{source}:{short-name}:{rawtable-name}:{suffix}'
-
 # can contain multiple contacts, can be overwritten on pipeline level
 default-contacts:
     - name: Prasanna Joshi
       email: prasanna.joshi@accenture.com
-      role: Bootcamp 44 Administrator 
+      role: Bootcamp 44 Administrator
       send-notification: true
-
 rawdbs:
   # list of raw-dbs > containing rawtables > containing pipelines
-  - rawdb-name: src:001:sap:db
-    dataset-external-id: src:001:sap:ds
-    short-name: sap
-    rawtables:
-        - rawtable-name: assets
-          pipelines:
-              - source: csv 
-                schedule: On trigger
-                contacts:
-                    - name: Prasanna Joshi 
-                      email: prasanna.joshi@accenture.com
-                      role: Bootcamp 44 Administrator
-                      send-notification: false
-
-  - rawdb-name: src:002:opcua:db
-    dataset-external-id: src:002:opcua:ds
-    short-name: opcua
-    rawtables:
-        - rawtable-name: datapoints
-          pipelines:
-              - source: ice-cream-api 
-                schedule: On trigger
-                contacts:
-                    - name: Prasanna Joshi 
-                      email: prasanna.joshi@accenture.com
-                      role: Bootcamp 44 Administrator
-                      send-notification: false
-
-
+    - rawdb-name: src:001:sap:db
+      dataset-external-id: src:001:sap:ds
+      short-name: sap
+      rawtables:
+          - rawtable-name: assets
+            pipelines:
+                - source: csv
+                  schedule: On trigger
+                  contacts:
+                      - name: Prasanna Joshi
+                        email: prasanna.joshi@accenture.com
+                        role: Bootcamp 44 Administrator
+                        send-notification: false
+    - rawdb-name: src:002:opcua:db
+      dataset-external-id: src:002:opcua:ds
+      short-name: opcua
+      rawtables:
+          - rawtable-name: datapoints
+            pipelines:
+                - source: ice-cream-api
+                  schedule: On trigger
+                  contacts:
+                      - name: Prasanna Joshi
+                        email: prasanna.joshi@accenture.com
+                        role: Bootcamp 44 Administrator
+                        send-notification: false
